@@ -1,5 +1,6 @@
 package ie.gmit.sw;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,10 +32,16 @@ public class Runner {
 		
 		m_words = Sorter.mapSort(m_words);
 		
-		
-		for(Map.Entry<String, Integer> entry: m_words.entrySet()) {
-			System.out.println(entry.getKey() + " : "+ entry.getValue());
+		Artist.init(m_words);
+		try {
+			Artist.draw(m_words);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		/*for(Map.Entry<String, Integer> entry: m_words.entrySet()) {
+			System.out.println(entry.getKey() + " : "+ entry.getValue());
+		}*/
 		
 	}
 
