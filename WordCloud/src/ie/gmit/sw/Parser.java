@@ -33,14 +33,13 @@ public class Parser {
 		Map<String, Integer> m_words = new LinkedHashMap<String, Integer>();
 		
 		try (Stream<String> stream = Files.lines(Paths.get(s_fileName))) {
-			//Stream<String> stream_a; 
 			stream.forEach(s->{for(String a: s.split("\\P{L}+")) {
 				if((!hs_ignore.contains(a)) && !(a.length() <= 1)) {
-				if(m_words.get(a) != null) {
-					m_words.put(a,m_words.get(a)+1);
-				}else {
-					m_words.put(a, 1);
-				}
+					if(m_words.get(a) != null) {
+						m_words.put(a,m_words.get(a)+1);
+					}else {
+						m_words.put(a, 1);
+					}
 				}
 			};}) ;
 	} catch (IOException e) {
